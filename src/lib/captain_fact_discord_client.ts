@@ -3,6 +3,7 @@
  */
 
 import Discord, {
+  Channel,
   Client,
   GuildChannel,
   GuildMember,
@@ -13,7 +14,7 @@ import { BOT_MSG_PREFIX } from "../constants";
 import CommandsHandlers from "./commands_handlers";
 import { channelSend, reply } from "./discord_utils";
 import ChannelID from "./enums/channel_id";
-import { logInfo } from "./logger";
+import { logError, logInfo } from "./logger";
 import render from "./msg_formatter";
 import MsgTemplate from "./msg_template";
 
@@ -81,8 +82,18 @@ export default class CaptainFactDiscordClient {
     } else {
       commandFunc(message, fullCommmand.slice(2));
     }
+  }
 
-    // Delete user message to avoid polution
-    message.delete();
+  public sendAnnounce = (msg: string) => {
+    const channel = this.client.channels.find((ch: Channel) => {
+      return ch.id === ChannelID.Annonces;
+    });
+    if (!channel) {
+      logError(
+        `Channel announce with id "${ChannelID.Annonces}" doesn't exist`,
+      );
+    } else {
+      (channel as TextChannel).send(msg);
+    }
   }
 }

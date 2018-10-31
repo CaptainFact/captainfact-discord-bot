@@ -4,15 +4,26 @@ import ChannelID from "./enums/channel_id";
 import RoleID from "./enums/role_id";
 import { logDevMessage } from "./logger";
 
-export const reply = (message: Message, body: RichEmbed | string) => {
+export const reply = (
+  message: Message,
+  body: RichEmbed | string,
+  mentionUser: boolean = false,
+) => {
   if (IS_DEV_MODE) {
     logDevMessage(JSON.stringify(body, null, 2));
+  } else if (mentionUser) {
+    message.reply(body);
   } else {
-    message.author.send(body);
+    message.channel.send(body);
   }
 };
 
-export const richReply = (message: Message, body: string, title: string) => {
+export const richReply = (
+  message: Message,
+  body: string,
+  title: string,
+  mentionUser: boolean = false,
+) => {
   const embed = new RichEmbed()
     .setTitle(
       `:information_source: **${title}**\n===========================\n`,
@@ -20,7 +31,7 @@ export const richReply = (message: Message, body: string, title: string) => {
     .setColor("#0097F4")
     .setDescription(body);
 
-  reply(message, embed);
+  reply(message, embed, mentionUser);
 };
 
 export const channelSend = (channel: TextChannel, message: string) => {
