@@ -16,6 +16,11 @@
 > The purpose of this bot is to welcome new users on Discord.
 > We may also implement userful commands in the future to interact with it.
 
+## Usage
+
+Use `!CF help` in production or `!CFD help` in development to see a list of
+available commands.
+
 ## Dev
 
 You must create a `.env` file at the root with the following content:

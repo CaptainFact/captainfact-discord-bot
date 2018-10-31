@@ -9,10 +9,9 @@ import Discord, {
   TextChannel,
 } from "discord.js";
 import { Message } from "discord.js";
-import { BOT_MSG_PREFIX, IS_DEV_MODE } from "../constants";
-import showHelp from "./commands/show_help";
-import showInfo from "./commands/show_info";
-import { channelSend } from "./discord_utils";
+import { BOT_MSG_PREFIX } from "../constants";
+import CommandsHandlers from "./commands_handlers";
+import { channelSend, reply } from "./discord_utils";
 import ChannelID from "./enums/channel_id";
 import { logInfo } from "./logger";
 import render from "./msg_formatter";
@@ -64,22 +63,23 @@ export default class CaptainFactDiscordClient {
     }
 
     // Split command
-    const command =
-      message
-        .toString()
-        .substr(BOT_MSG_PREFIX.length)
-        .match(/\S+/g) || [];
+    const commandStr = message.toString();
+    const fullCommmand = commandStr.match(/\S+/g) || [];
 
-    switch (command[0]) {
-      case undefined:
-      case "help":
-        showHelp(message);
-        break;
-      case "info":
-        showInfo(message, command.splice(1));
-        break;
-      default:
-        logInfo(`Unknown command ${command} by ${message.author.tag}`);
+    // Avoid matching on things like `!CFGFDFSFSDF`
+    if (fullCommmand[0] !== BOT_MSG_PREFIX) {
+      return;
+    }
+
+    // Dispatch command
+    const commandFunc = CommandsHandlers[fullCommmand[1]];
+    if (!commandFunc) {
+      reply(
+        message,
+        `Commande invalide : \`${commandStr}\`.\nTapez \`!CF help\` pour voir la liste des commandes disponnibles.`,
+      );
+    } else {
+      commandFunc(message, fullCommmand.slice(2));
     }
   }
 }

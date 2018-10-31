@@ -3,7 +3,7 @@ import { reply, richReply } from "../discord_utils";
 import render from "../msg_formatter";
 import MsgTemplate from "../msg_template";
 
-export default function showInfo(message: Message, args: string[]) {
+export default function commandInfo(message: Message, args: string[]) {
   if (args.length === 0) {
     reply(
       message,

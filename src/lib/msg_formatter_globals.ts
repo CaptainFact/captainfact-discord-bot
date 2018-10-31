@@ -2,7 +2,11 @@ import { formatChannel, formatRole } from "./discord_utils";
 import ChannelID from "./enums/channel_id";
 import RolesID from "./enums/role_id";
 
-const MessageFormatterGlobals = {
+interface IMessageFormatterGlobals {
+  [s: string]: string;
+}
+
+const MessageFormatterGlobals: IMessageFormatterGlobals = {
   // Channels
   ChannelHelp: formatChannel(ChannelID.Help),
   ChannelLive: formatChannel(ChannelID.Live),
