@@ -8,7 +8,7 @@ export const reply = (message: Message, body: RichEmbed | string) => {
   if (IS_DEV_MODE) {
     logDevMessage(JSON.stringify(body, null, 2));
   } else {
-    message.reply(body);
+    message.author.send(body);
   }
 };
 

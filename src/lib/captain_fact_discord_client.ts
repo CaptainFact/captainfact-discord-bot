@@ -81,5 +81,8 @@ export default class CaptainFactDiscordClient {
     } else {
       commandFunc(message, fullCommmand.slice(2));
     }
+
+    // Delete user message to avoid polution
+    message.delete();
   }
 }
