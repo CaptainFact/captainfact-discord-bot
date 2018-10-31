@@ -6,8 +6,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "dev": "nodemon --exec babel-node -r node_modules/dotenv/config src/index.js",
-    "build": "rm -rf dist && babel src --out-dir dist",
+    "dev": "nodemon",
+    "build": "rm -rf dist && tsc -p .",
     "start": "node dist/index.js"
   },
   "keywords": [
@@ -18,20 +18,21 @@
   "author": "Benjamin Piouffle",
   "license": "AGPL-3.0-or-later",
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "nodemon": "^1.18.5"
+    "nodemon": "^1.18.5",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "dotenv": "^6.1.0"
   },
   "dependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/node": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
+    "@types/node": "^10.12.1",
+    "@types/string-template": "^1.0.2",
     "discord.js": "^11.4.2",
-    "dotenv": "^6.1.0",
-    "string-template": "^1.0.0"
+    "string-template": "^1.0.0",
+    "typescript": "^3.1.4"
+  },
+  "jest": {
+    "clearMocks": true,
+    "coverageDirectory": "coverage",
+    "testEnvironment": "node"
   }
 }
