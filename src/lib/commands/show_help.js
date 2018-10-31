@@ -1,8 +1,6 @@
-import { IS_DEV_MODE } from '../../constants';
-import { logDevMessage } from '../logger';
 import render from '../msg_formatter';
+import { richReply } from '../discord_utils';
 
-export default function showHelp(message, args) {
-  const sendReply = IS_DEV_MODE ? logDevMessage : msg => message.reply(msg);
-  sendReply(render('help'));
+export default function showHelp(message) {
+  richReply(message, render('help'), 'Utilisation du bot Discord');
 }
