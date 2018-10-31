@@ -1,4 +1,15 @@
-- `!CF help`: Afficher les commandes disponnibles
-- `!CF info groups`: Afficher les explications des groupes (rôles) Discord
-- `!CF info channels`: Afficher les explications des salons Discord
-- `!CF info opensource`: Afficher les information sur comment participer au code source
+**Aide**
+
+- **`!CF help`** - Affiche les commandes disponnibles
+
+**Info**
+`Pour obtenir des informations sur le fonctionnement`
+
+- **`!CF info groups`** - Affiche les explications des groupes (rôles) Discord.
+- **`!CF info channels`** - Affiche les explications des salons Discord.
+- **`!CF info opensource`** - Affiche des conseils pour participer au code source.
+
+**Team**
+`Commandes réservées à l'équipe technique`
+
+- **`!CF sendAsBot [message]`** - Envoie un message avec le bot CaptainFact

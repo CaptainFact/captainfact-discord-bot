@@ -1,6 +1,7 @@
 import { Message } from "discord.js";
 import commandHelp from "./commands/help";
 import commandInfo from "./commands/info";
+import commandSendAsBot from "./commands/send_as_bot";
 
 type ICommandFunc = (message: Message, args: string[]) => void;
 
@@ -11,6 +12,7 @@ interface ICommandsHandlers {
 const CommandsHandlers: ICommandsHandlers = {
   help: commandHelp,
   info: commandInfo,
+  sendAsBot: commandSendAsBot,
 };
 
 export default CommandsHandlers;

@@ -28,6 +28,7 @@ You must create a `.env` file at the root with the following content:
 ```env
 DISCORD_BOT_TOKEN=YOUR-DISCORD-BOT-TOKEN
 NODE_ENV=development
+PREFIX=!CFD
 ```
 
 Then run:
