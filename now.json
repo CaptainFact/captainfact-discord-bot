@@ -9,7 +9,8 @@
   },
   "env": {
     "DISCORD_BOT_TOKEN": "@captainfact-bot-discord-token",
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "CMD_PREFIX": "!CF"
   },
   "github": {
     "enabled": false

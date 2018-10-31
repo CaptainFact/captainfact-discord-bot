@@ -13,3 +13,4 @@
 `Commandes réservées à l'équipe technique`
 
 - **`!CF sendAsBot [message]`** - Envoie un message avec le bot CaptainFact
+- **`!CF promote [@role] [@user1] [@user2]...`** - Promeut un ou plusieurs utilisateurs au rôle donné

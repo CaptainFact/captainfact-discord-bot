@@ -2,9 +2,9 @@
  * Main entrypoint for Discord API interaction.
  */
 
-import Discord, {
+import {
   Channel,
-  Client,
+  Client as DiscordClient,
   GuildChannel,
   GuildMember,
   TextChannel,
@@ -19,10 +19,10 @@ import render from "./msg_formatter";
 import MsgTemplate from "./msg_template";
 
 export default class CaptainFactDiscordClient {
-  private client: Client;
+  private client: DiscordClient;
 
   constructor() {
-    this.client = new Discord.Client();
+    this.client = new DiscordClient();
 
     // Connection succeed
     this.client.on("ready", this.onReady);
@@ -44,9 +44,7 @@ export default class CaptainFactDiscordClient {
 
   public onGuildMemberAdd = (member: GuildMember) => {
     // Send the message to a designated channel on a server:
-    const channel = member.guild.channels.find((ch: GuildChannel) => {
-      return ch.id === ChannelID.General;
-    });
+    const channel = member.guild.channels.get(ChannelID.General);
     // Do nothing if the channel wasn't found on this server
     if (!channel) {
       return;
