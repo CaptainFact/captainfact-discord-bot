@@ -41,4 +41,4 @@ npm run dev
 ## Deploy
 
 Zeit Now is used to deploy this bot. Use the `./deploy.sh` script to do so as
-it will automatically shut down old deployment(s) when it succed.
+it will automatically shut down old deployment(s) when it succeeds.
